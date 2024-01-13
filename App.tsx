@@ -1,7 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 import HomeScreen from "./screens/HomeScreen";
+import WalletScreen from "./screens/WalletScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -14,11 +16,20 @@ function HomeStack() {
   );
 }
 
+function WalletStack() {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Wallet" component={WalletScreen} />
+    </Stack.Navigator>
+  );
+}
+
 const App = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeStack} />
+      <Tab.Navigator screenOptions={{ headerShown: false }}>
+        <Tab.Screen name="Keşfet" component={HomeStack} />
+        <Tab.Screen name="Daha Cüzdan" component={WalletStack} />
       </Tab.Navigator>
     </NavigationContainer>
   );
