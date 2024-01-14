@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
   brandsContainer: {
     flexDirection: "row",
     alignItems: "center",
+    paddingTop: 30,
     paddingVertical: 10,
     paddingHorizontal: 20,
   },

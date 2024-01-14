@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   image: {
-    width: "100%",
-    height: "100%",
+    width: 305,
+    height: 383,
     position: "absolute",
   },
 });

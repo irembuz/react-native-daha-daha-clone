@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from "react-native";
 const WalletScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Wallet</Text>
+      <Text style={styles.text}>Çok Yakında</Text>
     </View>
   );
 };
