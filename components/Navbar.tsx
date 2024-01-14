@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <Image
-          source={require("../assets/images/Logo.png")} // Logo resminizin yolu
+          source={require("../assets/images/Logo.png")}
           style={styles.logo}
         />
         <View style={styles.rightContainer}>

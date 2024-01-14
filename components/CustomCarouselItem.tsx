@@ -6,7 +6,7 @@ import type {
   ImageURISource,
   ImageSourcePropType,
 } from "react-native";
-import { Image, StyleSheet, View, ActivityIndicator, Text } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import { LongPressGestureHandler } from "react-native-gesture-handler";
 import type { AnimateProps } from "react-native-reanimated";
 import Animated from "react-native-reanimated";
@@ -19,13 +19,7 @@ interface Props extends AnimateProps<ViewProps> {
 }
 
 export const CustomCarouselItem: React.FC<Props> = (props) => {
-  const {
-    style,
-    index,
-    pretty,
-    img,
-    ...animatedViewProps
-  } = props;
+  const { style, index, pretty, img, ...animatedViewProps } = props;
   const source = React.useRef<ImageURISource>({
     uri: `https://picsum.photos/id/${index}/400/300`,
   }).current;

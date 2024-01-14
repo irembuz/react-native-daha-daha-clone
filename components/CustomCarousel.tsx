@@ -1,7 +1,8 @@
 import * as React from "react";
-import { useWindowDimensions } from "react-native";
+import { TouchableOpacity, useWindowDimensions } from "react-native";
 import { useSharedValue } from "react-native-reanimated";
 import Carousel from "react-native-reanimated-carousel";
+import { useNavigation } from "@react-navigation/native";
 
 import { window } from "../constants";
 import { CustomCarouselItem } from "./CustomCarouselItem";
@@ -14,6 +15,7 @@ type CustomCarouselProps = {
 };
 
 const CustomCarousel: React.FC<CustomCarouselProps> = ({ images }) => {
+  const navigation = useNavigation();
   const windowWidth = useWindowDimensions().width;
   const scrollOffsetValue = useSharedValue<number>(0);
   const [isVertical, setIsVertical] = React.useState(false);
@@ -30,16 +32,22 @@ const CustomCarousel: React.FC<CustomCarouselProps> = ({ images }) => {
         height: PAGE_HEIGHT * 0.7,
       } as const);
 
+  const onPress = () => {
+    navigation.navigate("Details" as never);
+  };
+
   return (
-    <Carousel
-      {...baseOptions}
-      loop={false}
-      defaultScrollOffsetValue={scrollOffsetValue}
-      data={images}
-      renderItem={({ index, item }) => (
-        <CustomCarouselItem index={index} img={item} />
-      )}
-    />
+    <TouchableOpacity onPress={onPress}>
+      <Carousel
+        {...baseOptions}
+        loop={false}
+        defaultScrollOffsetValue={scrollOffsetValue}
+        data={images}
+        renderItem={({ index, item }) => (
+          <CustomCarouselItem index={index} img={item} />
+        )}
+      />
+    </TouchableOpacity>
   );
 };
 
