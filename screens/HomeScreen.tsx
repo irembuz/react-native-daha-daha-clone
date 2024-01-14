@@ -1,11 +1,13 @@
 import { View, Text, StyleSheet } from "react-native";
 
+import BrandsScrollView from "../components/BrandsScrollView";
 import Navbar from "../components/Navbar";
 
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <Navbar />
+      <BrandsScrollView />
       <Text style={styles.text}>HomeScreen</Text>
     </View>
   );
