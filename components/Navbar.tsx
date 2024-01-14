@@ -8,7 +8,15 @@ import {
   Image,
 } from "react-native";
 
+import { FontAwesome } from "@expo/vector-icons";
+
 const Navbar: React.FC = () => {
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+
+  const handleLogin = () => {
+    setIsLoggedIn(!isLoggedIn);
+  };
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -16,9 +24,21 @@ const Navbar: React.FC = () => {
           source={require("../assets/images/Logo.png")} // Logo resminizin yolu
           style={styles.logo}
         />
-        <TouchableOpacity style={styles.loginButton}>
-          <Text style={styles.loginButtonText}>Giriş Yap</Text>
-        </TouchableOpacity>
+        <View style={styles.rightContainer}>
+          {isLoggedIn ? (
+            <FontAwesome name="user-circle" size={40} color="red" />
+          ) : (
+            <>
+              <TouchableOpacity
+                onPress={handleLogin}
+                style={styles.loginButton}
+              >
+                <Text style={styles.loginButtonText}>Giriş Yap</Text>
+              </TouchableOpacity>
+              <FontAwesome name="user-circle" size={40} color="black" />
+            </>
+          )}
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -36,6 +56,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: "#fff",
   },
+  rightContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
   logo: {
     width: 100,
     height: 40,
@@ -43,13 +67,19 @@ const styles = StyleSheet.create({
   },
   loginButton: {
     backgroundColor: "red",
+    width: 91,
+    height: 40,
     paddingVertical: 8,
     paddingHorizontal: 20,
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 20,
+    marginRight: 10,
   },
   loginButtonText: {
     color: "#fff",
-    fontSize: 16,
+    fontSize: 12,
+    textAlign: "center",
   },
 });
 
