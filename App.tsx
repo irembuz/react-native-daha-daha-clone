@@ -6,6 +6,8 @@ import DetailScreen from "./screens/DetailScreen";
 import HomeScreen from "./screens/HomeScreen";
 import WalletScreen from "./screens/WalletScreen";
 
+import { Entypo, Ionicons } from "@expo/vector-icons";
+
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -30,8 +32,24 @@ const App = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="Keşfet" component={HomeStack} />
-        <Tab.Screen name="Daha Cüzdan" component={WalletStack} />
+        <Tab.Screen
+          name="Keşfet"
+          component={HomeStack}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name="compass" size={26} color="black" />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Daha Cüzdan"
+          component={WalletStack}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Entypo name="star" size={26} color="black" />
+            ),
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
