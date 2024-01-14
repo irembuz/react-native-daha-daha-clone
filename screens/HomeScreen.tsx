@@ -1,15 +1,25 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import BrandsScrollView from "../components/BrandsScrollView";
 import Navbar from "../components/Navbar";
+import CustomCarousel from "../components/CustomCarousel";
+import React from "react";
 
-const HomeScreen = () => {
+const HomeScreen: React.FC = () => {
+  const images = [
+    require("../assets/images/CocaColaCampaign.png"),
+    require("../assets/images/SpriteCampaign.png"),
+  ];
+
   return (
-    <View style={styles.container}>
-      <Navbar />
-      <BrandsScrollView />
-      <Text style={styles.text}>HomeScreen</Text>
-    </View>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <Navbar />
+        <BrandsScrollView />
+        <CustomCarousel images={images} />
+      </View>
+    </GestureHandlerRootView>
   );
 };
 
@@ -19,11 +29,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#F5FCFF",
-  },
-  text: {
-    fontSize: 20,
-    textAlign: "center",
-    margin: 10,
   },
 });
 
